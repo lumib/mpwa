@@ -1,0 +1,61 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Music Web Player{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#252525">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin-ext' rel='stylesheet' type='text/css'>
+
+    {% block styles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'music_player/css/base.css' %}"/>
+    {% endblock %}
+
+    {% block inline_style %}{% endblock %}
+</head>
+<body>
+<aside class="default-state" id="sidebar">
+    <nav>
+        <ul>
+            <li><a {% block current_home %}{% endblock %} href="{% url 'index' %}">Home</a></li>
+            <li><a {% block current_artists %}{% endblock %} href="{% url 'artists' %}">Artists</a></li>
+            <li><a {% block current_albums %}{% endblock %} href="{% url 'albums' %}">Albums</a></li>
+            <li><a {% block current_tracks %}{% endblock %} href="{% url 'tracks' %}">Tracks</a></li>
+            <li><a {% block current_playlists %}{% endblock %} href="{% url 'playlists' %}">Playlists</a></li>
+            <li><a {% block current_radio %}{% endblock %} href="{% url 'radios' %}">Radios</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<footer id="player">
+    <div id="progress-bar">
+        <div id="seeker"></div>
+    </div>
+    <div class="wrapper">
+        <button type="button" id="menu-toggle"></button>
+        <div id="details">
+            <h3 class="text-title- limited" id="playing-track-title"></h3>
+
+            <h3 class="text-info- limited" id="playing-track-artist"></h3>
+        </div>
+        <div id="controls">
+            <button type="button" class="player-control" id="player-button-previous"></button>
+            <button type="button" class="player-control" id="player-button-play"></button>
+            <button type="button" class="player-control" id="player-button-next"></button>
+        </div>
+    </div>
+</footer>
+
+<div class="default-state" id="container">
+    <main id="content">{% block content %}{% endblock %}</main>
+    <div id="player-queue"></div>
+</div>
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'music_player/scripts/player.js' %}"></script>
+    <script type="text/javascript" src="{% static 'music_player/scripts/site.js' %}"></script>
+{% endblock %}
+</body>
+</html>

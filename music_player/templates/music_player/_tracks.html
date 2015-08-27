@@ -1,0 +1,23 @@
+<div class="list track-list">
+    <p class="text-head">Tracks</p>
+    <table class="table track-table">
+        <thead>
+        <tr>
+            <th class="column-number">#</th>
+            <th class="column-title">TITLE</th>
+            <th class="column-artist">ARTIST</th>
+            <th class="column-duration">LENGTH</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for track in tracks %}
+            <tr class="track" data-type="track" data-id="{{ track.id }}" data-url="{{ track.location_on_disk }}">
+                <td class="column-number">{{ forloop.counter }}</td>
+                <td class="column-title">{{ track.title }}</td>
+                <td class="column-artist">{{ track.artist__artist }}</td>
+                <td class="column-duration">{{ track.formatted_duration }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,24 @@
+{% load staticfiles %}
+
+<div class="artist" data-type="artist" data-id="{{ artist.id }}">
+    <p class="text-head padded">{{ artist.artist }}</p>
+
+    <div class="releases">
+        {% for album in albums %}
+            <div class="album" data-type="album" data-id="{{ album.id }}"
+                 style="background: url(&quot;{% static album.cover %}&quot;)  repeat-x" ;>
+                <div class="header">
+                    <img class="cover cover-small" src="{% static album.cover %}" alt="{{ album.album }}"
+                         onerror="this.style.display='none';">
+
+                    <div class="padded">
+                        <p class="text-title limited"><a class="album-link"
+                                                         href="{% url 'album_id' album.id %}">{{ album.album }}</a></p>
+
+                        <p class="text-info">{{ album.release_type }} ● {{ album.year }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="list artist-list">
+    <p class="text-head">Artists</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="column-number">#</th>
+            <th class="column-title">ARTIST</th>
+            <th class="column-artist"></th>
+            <th class="column-duration"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for artist in artists %}
+            <tr class="artist" data-type="artist" data-id="{{ artist.id }}">
+                <td class="column-number">{{ forloop.counter }}</td>
+                <td class="column-title" colspan="3"><a class="artist-link"
+                                                        href="{% url 'artist_id' artist.id %}">{{ artist.artist }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,24 @@
+<div class="list album-list">
+    <p class="text-head">Albums</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="column-number">#</th>
+            <th class="column-title">ALBUM</th>
+            <th class="column-artist">ARTIST</th>
+            <th class="column-duration">YEAR</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for album in albums %}
+            <tr class="album" data-type="album" data-id="{{ album.id }}">
+                <td class="column-number">{{ forloop.counter }}</td>
+                <td class="column-title"><a class="album-link"
+                                            href="{% url 'album_id' album.id %}">{{ album.album }}</a></td>
+                <td class="column-artist">{{ album.artist__artist }}</td>
+                <td class="column-duration">{{ album.year }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
