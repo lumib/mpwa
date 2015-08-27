@@ -24,8 +24,8 @@ You can then run the app using the django development server or your web server 
 ![album](screenshots/album.png)
 ![albums](screenshots/albums.png)
 ![artist](screenshots/artist.png)
-![tracks](screenshots/tracks-responsive.png
+![tracks](screenshots/tracks-responsive.png)
 
 ## License
 
-TheMIT License. See [license](LICENSE).
+The MIT License. See [license](LICENSE).
